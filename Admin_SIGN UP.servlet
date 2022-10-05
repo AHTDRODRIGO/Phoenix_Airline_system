@@ -1,0 +1,19 @@
+String logemail = request.getParameter("email");
+            String logpass = request.getParameter("password");
+            
+            UserDatabase db =  new UserDatabase(ConnectionPro.getConnection());
+            User user = db.logUser(logemail, logpass);
+            
+            if(user!=null){
+                HttpSession session = request.getSession();
+                session.setAttribute("logUser", user);
+                response.sendRedirect("welcome.jsp");
+            }else{
+                out.println("user not found");
+            }
+
+
+
+HttpSession session = request.getSession();
+            session.removeAttribute("logUser");
+            response.sendRedirect("index.jsp");
