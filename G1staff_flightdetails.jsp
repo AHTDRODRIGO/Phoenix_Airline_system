@@ -106,8 +106,8 @@ cookieverify obj=new cookieverify();
             <div class="number">
                 <%
                 dbconnect obje =new dbconnect();
-                String G1empcount=obje.G1empcount();
-                out.print(G1empcount);
+                String flightbookcount=obje.flightbookcount();
+                out.print(flightbookcount);
                 %>
             </div>
            
@@ -119,8 +119,8 @@ cookieverify obj=new cookieverify();
              <div class="box-topic">Total users</div>
             <div class="number">
             <%
-                String flightbookcount=obje.flightbookcount();
-                out.print(flightbookcount);
+                String usercount=obje.usercount();
+                out.print(usercount);
                 %>
             </div>
             
@@ -131,8 +131,8 @@ cookieverify obj=new cookieverify();
           <div class="right-side">
             <div class="box-topic">Total G 01 Staff Members</div>
             <div class="number"><%
-                String usercount=obje.usercount();
-                out.print(usercount);
+                String G1empcount=obje.G1empcount();
+                out.print(G1empcount);
                 %></div>
             
           </div>
