@@ -306,6 +306,28 @@ INSERT INTO `ticketdetails` (`ticketid`, `flightid`, `uname`) VALUES
 ('TDZ10252316472109', 'A879', 'kavii');
 
 
+Table structure for `To_approve_staff_details`
+--
+
+CREATE TABLE `temp_staff_details` (
+  `uname` varchar(100) NOT NULL,
+  `fullname` varchar(100) NOT NULL,
+  `empid` varchar(50) NOT NULL,
+  `password` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `To_approve_staff_details`
+--
+
+INSERT INTO `temp_staff_details` (`uname`, `fullname`, `empid`, `password`) VALUES
+('Kapuge', 'Anthonan Hettilage Iduni Kapuge', '007', 'asd123fgtd'),
+('Liyanage', 'Samaraweera Archchige Chamuditha Liyanage', '008', 'hhggsyjj127hshgh'),
+('Sumali', 'Samarakoon Don Nimki Sumali', '009', 'hhaghxuysjh');
+('Erangi', 'Weerasekara liyanage Piyumika Erangi', '010', 'hugyuftvsigh');
+('Kaweesha', 'Panakadu liyanage Kaweesha Nemthmi', '011', 'hsjhyuvah');
+
+
 CREATE TABLE `userdetails` (
   `Fullname` varchar(100) NOT NULL,
   `Email` varchar(100) NOT NULL,
