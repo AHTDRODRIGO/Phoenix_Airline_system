@@ -1,5 +1,3 @@
-
-
 <%@page import  = "javax.servlet.http.Cookie"%>
  <%@page import  = "java.io.PrintWriter"%>
  <%@page import="model.dbconnect"%>
@@ -8,12 +6,8 @@
 Cookie[] ck = request.getCookies();
 String uname = "none";
 cookieverify obj=new cookieverify();
-                    
+
                             
-                            
-                    
-                          
-                      
                     if(!(request.getCookies()==null))
                     {
                     out.print(obj.verifyindex(request, response));
@@ -33,14 +27,17 @@ cookieverify obj=new cookieverify();
       %></h2>	
 <!DOCTYPE html>
 
-
-
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
-    <title>Staff G2 Dashboard</title>
+    <title>Staff G1 Dashboard</title>
     <link rel="stylesheet" href="G1G2staffstyle.css">
    
+    
+    
+    
+ 
+  
    
    
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -53,27 +50,29 @@ cookieverify obj=new cookieverify();
     </div>
       <ul class="nav-links">
            <li>
-            <a href="G2staff_userdetails.jsp" class="active">
+            <a href="G1staff_dashboard.jsp" class="active">
             <i class='bx bx-list-ul' ></i>
             <span class="links_name">User Details</span>
           </a>
         </li>
+        
         <li>
-          <a href="G2staff_Flightdetails.jsp"  >
+          <a href="G1staff_flightdetails.jsp" >
             <i class='bx bx-grid-alt' ></i>
             <span class="links_name">Flight Details</span>
           </a>
         </li>
        
         <li>
- 
-          <a href="G2staff_ticketdetails.jsp" >
+           
+          <a href="G1staff_ticketdetails.jsp" >
             <i class='bx bx-box' ></i>
             <span class="links_name">Ticket Details</span>
           </a>
         </li>
-    
-      
+        
+        
+     
        
         <li class="log_out"> 
           <a href="./logout">
@@ -87,7 +86,7 @@ cookieverify obj=new cookieverify();
     <nav>
       <div class="sidebar-button">
         <i class='bx bx-menu sidebarBtn'></i>
-        <span class="dashboard"> Grade 02 Staff Dashboard</span>
+        <span class="dashboard">Grade 01 Staff Dashboard</span>
       </div>
       
       <div class="profile-details">
@@ -106,11 +105,7 @@ cookieverify obj=new cookieverify();
             <div class="number">
                 <%
                 dbconnect obje =new dbconnect();
-
                 Stringflightbookcount=obje.flightbookcount();
-
-                String flightbookcount=obje.flightbookcount();
-
                 out.print(flightbookcount);
                 %>
             </div>
@@ -120,11 +115,11 @@ cookieverify obj=new cookieverify();
         </div>
         <div class="box">
           <div class="right-side">
-             <div class="box-topic">Total Users</div>
+             <div class="box-topic">Total users</div>
             <div class="number">
             <%
-                String usercount=obje.usercount();
-                out.print(usercount);
+                String usercount=obje. usercount();
+                out.print( usercount);
                 %>
             </div>
             
@@ -135,13 +130,8 @@ cookieverify obj=new cookieverify();
           <div class="right-side">
             <div class="box-topic">Total G 01 Staff Members</div>
             <div class="number"><%
-
                 String G1empcount=obje.G1empcount();
                 out.print(G1empcount);
-
-                String G1empcount=obje. G1empcount();
-                out.print( G1empcount);
-
                 %></div>
             
           </div>
@@ -160,25 +150,24 @@ cookieverify obj=new cookieverify();
         </div>
       </div>
 
-
-            
       <div class="sales-boxes">
         <div class="recent-sales box">
           <div class="title">User Details</div>
 <%@page import="java.io.PrintWriter"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
+          
           <%
               
-      
+        
         out.println("<br>");  
           
         List<model.userdetailsbean> list=model.dbconnect.getuserdetails();  
           
         out.print("<table border='1' width='100%'");  
-        out.print("<tr><th>Username</th><th>Fullname</th><th>Email</th><th>Password</th><th></th><th></th><th></th>");  
+        out.print("<tr><th>Username</th><th>Fullname</th><th>Email</th><th></th><th></th>");  
         for(model.userdetailsbean e:list){  
-         out.print("<tr><td>"+"&nbsp "+e.getusername()+"</td><td>"+"&nbsp"+e.getfullname()+"</td><td>"+"&nbsp "+e.getemail()+"</td><td>"+"&nbsp "+e.getpassword()+"</td>  </tr>");  
+         out.print("<form action='./updateuser' method='post'><tr><td>"+e.getusername()+"<input type='hidden' name='username' value="+e.getusername()+"> </td><td><input type='text' name='fullname' value="+e.getfullname()+"> </td><td><input type='text' name='email' value="+e.getemail()+"> </td><td><input type='submit' value='Update'>  </form></td> <td> <form action='./deleteusers' method='post'><input type='hidden' name='username' value="+e.getusername()+"> <input type='submit' value='Delete'>  </form></td> </tr>");  
         }  
         out.print("</table>");  
         out.close(); 

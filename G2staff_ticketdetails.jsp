@@ -1,4 +1,5 @@
 
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%@page import  = "javax.servlet.http.Cookie"%>
  <%@page import  = "java.io.PrintWriter"%>
@@ -12,7 +13,6 @@ cookieverify obj=new cookieverify();
                             
                             
                     
-                          
                       
                     if(!(request.getCookies()==null))
                     {
@@ -39,9 +39,8 @@ cookieverify obj=new cookieverify();
   <head>
     <meta charset="UTF-8">
     <title>Staff G2 Dashboard</title>
-    <link rel="stylesheet" href="G1G2staffstyle.css">
-   
-   
+     <link rel="stylesheet" href="G1G2staffstyle.css">
+    
    
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
@@ -53,13 +52,13 @@ cookieverify obj=new cookieverify();
     </div>
       <ul class="nav-links">
            <li>
-            <a href="G2staff_userdetails.jsp" class="active">
+            <a href="G2staff_userdetails.jsp">
             <i class='bx bx-list-ul' ></i>
             <span class="links_name">User Details</span>
           </a>
         </li>
         <li>
-          <a href="G2staff_Flightdetails.jsp"  >
+          <a href="G2staff_Flightdetails.jsp">
             <i class='bx bx-grid-alt' ></i>
             <span class="links_name">Flight Details</span>
           </a>
@@ -67,13 +66,12 @@ cookieverify obj=new cookieverify();
        
         <li>
  
-          <a href="G2staff_ticketdetails.jsp" >
+          <a href="G2staff_ticketdetails.jsp" class="active">
             <i class='bx bx-box' ></i>
             <span class="links_name">Ticket Details</span>
           </a>
         </li>
-    
-      
+
        
         <li class="log_out"> 
           <a href="./logout">
@@ -87,7 +85,7 @@ cookieverify obj=new cookieverify();
     <nav>
       <div class="sidebar-button">
         <i class='bx bx-menu sidebarBtn'></i>
-        <span class="dashboard"> Grade 02 Staff Dashboard</span>
+        <span class="dashboard">Grade 02 Staff Dashboard</span>
       </div>
       
       <div class="profile-details">
@@ -106,11 +104,7 @@ cookieverify obj=new cookieverify();
             <div class="number">
                 <%
                 dbconnect obje =new dbconnect();
-
-                Stringflightbookcount=obje.flightbookcount();
-
                 String flightbookcount=obje.flightbookcount();
-
                 out.print(flightbookcount);
                 %>
             </div>
@@ -127,7 +121,7 @@ cookieverify obj=new cookieverify();
                 out.print(usercount);
                 %>
             </div>
-            
+           
           </div>
           <i class='bx bxs-cart-add cart two' ></i>
         </div>
@@ -135,13 +129,8 @@ cookieverify obj=new cookieverify();
           <div class="right-side">
             <div class="box-topic">Total G 01 Staff Members</div>
             <div class="number"><%
-
                 String G1empcount=obje.G1empcount();
                 out.print(G1empcount);
-
-                String G1empcount=obje. G1empcount();
-                out.print( G1empcount);
-
                 %></div>
             
           </div>
@@ -161,26 +150,27 @@ cookieverify obj=new cookieverify();
       </div>
 
 
-            
-      <div class="sales-boxes">
+         <div class="sales-boxes">
         <div class="recent-sales box">
-          <div class="title">User Details</div>
+          <div class="title">Flights</div>
 <%@page import="java.io.PrintWriter"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
           <%
-              
-      
+       
         out.println("<br>");  
           
-        List<model.userdetailsbean> list=model.dbconnect.getuserdetails();  
+        List<model.flightbookingbeans> list=model.dbconnect.getAllBookings();  
           
         out.print("<table border='1' width='100%'");  
-        out.print("<tr><th>Username</th><th>Fullname</th><th>Email</th><th>Password</th><th></th><th></th><th></th>");  
-        for(model.userdetailsbean e:list){  
-         out.print("<tr><td>"+"&nbsp "+e.getusername()+"</td><td>"+"&nbsp"+e.getfullname()+"</td><td>"+"&nbsp "+e.getemail()+"</td><td>"+"&nbsp "+e.getpassword()+"</td>  </tr>");  
-        }  
+        out.print("<tr><th>Uname</th><th>Trip Method</th><th>fullname</th><th>Passport ID</th><th>Email</th><th>departure</th><th>arrival</th><th>departure_date</th><th>return_date</th><th>classtype</th><th>adult</th><th>child</th><th></th>");  
+        for(model.flightbookingbeans e:list){  
+         out.print("<tr><td>"+"&nbsp "+e.getuname()+"</td><td>"+"&nbsp"+e.gettripmethod()+"</td><td>"+"&nbsp"+e.getfullname()+"</td><td>"+"&nbsp"+e.getpassportid()+"</td><td>"+"&nbsp"+e.getemail()+"</td><td>"+"&nbsp"+e.getdeparture()+"</td><td>"+"&nbsp"+e.getarrival()+"</td><td>"+"&nbsp"+e.getdeparturedate()+"</td><td>"+"&nbsp"+e.getreturndate()+"</td><td>"+"&nbsp"+e.getclasstype()+"</td><td>"+"&nbsp"+e.getadult()+"</td><td>"+"&nbsp"+e.getchild()+"</td> </tr>");  
+        }
+        
+        
         out.print("</table>");  
+          
         out.close(); 
           %>
           
