@@ -1,19 +1,12 @@
-
-
-<%@page import  = "javax.servlet.http.Cookie"%>
+ <%@page import  = "javax.servlet.http.Cookie"%>
  <%@page import  = "java.io.PrintWriter"%>
  <%@page import="model.dbconnect"%>
  <%@page import="model.cookieverify"%>
-<h2><%             
+<h2>
+<%             
 Cookie[] ck = request.getCookies();
 String uname = "none";
-cookieverify obj=new cookieverify();
-                    
-                            
-                            
-                    
-                          
-                      
+cookieverify obj=new cookieverify();   
                     if(!(request.getCookies()==null))
                     {
                     out.print(obj.verifyindex(request, response));
@@ -30,18 +23,16 @@ cookieverify obj=new cookieverify();
                         if(uname=="none"){response.sendRedirect("index.jsp");}        
                       
                             
-      %></h2>	
+%>
+</h2>	
 <!DOCTYPE html>
-
-
 
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
-    <title>Staff G2 Dashboard</title>
-    <link rel="stylesheet" href="G1G2staffstyle.css">
-   
-   
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="Admin.css">
+    <link rel="stylesheet" href="Admin_table.css">
    
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
@@ -52,28 +43,43 @@ cookieverify obj=new cookieverify();
       <span class="logo_name">Phoenix <br>Airline</span>
     </div>
       <ul class="nav-links">
-           <li>
-            <a href="G2staff_userdetails.jsp" class="active">
-            <i class='bx bx-list-ul' ></i>
+        <li>
+          <a href="admin_user.jsp" >
+            <i class='bx bx-grid-alt' ></i>
             <span class="links_name">User Details</span>
           </a>
         </li>
         <li>
-          <a href="G2staff_Flightdetails.jsp"  >
-            <i class='bx bx-grid-alt' ></i>
-            <span class="links_name">Flight Details</span>
+            <a href="admin_booking.jsp" class="active">
+            <i class='bx bx-list-ul' ></i>
+            <span class="links_name">Booking Details</span>
           </a>
         </li>
-       
         <li>
- 
-          <a href="G2staff_ticketdetails.jsp" >
+          <a href="admin_G1.jsp" >
             <i class='bx bx-box' ></i>
-            <span class="links_name">Ticket Details</span>
+            <span class="links_name">Grade 01 Staff Details</span>
           </a>
         </li>
-    
-      
+        <li>
+           <a href="admin_G2.jsp" >
+            <i class='bx bx-pie-chart-alt-2'  ></i>
+            <span class="links_name">Grade 02 Staff Details</span>
+          </a>
+        </li>
+         <li>
+               <a href="admin_staff.jsp">
+            <i class='bx bx-box' ></i>
+            <span class="links_name"> Register Staff</span>
+          </a>
+        </li>
+             
+      <li class="">
+          <a href="index.jsp">
+            <i class='bx bx-log-out'></i>
+            <span class="links_name">Home</span>
+          </a>
+        </li>
        
         <li class="log_out"> 
           <a href="./logout">
@@ -85,92 +91,86 @@ cookieverify obj=new cookieverify();
   </div>
   <section class="home-section">
     <nav>
-      <div class="sidebar-button">
-        <i class='bx bx-menu sidebarBtn'></i>
-        <span class="dashboard"> Grade 02 Staff Dashboard</span>
-      </div>
       
+     
       <div class="profile-details">
-        <img src="images/profile.jpg" alt="">
+        <img src="Profile-Icon.png" alt="">
         <span class="admin_name"><%out.print(uname);%></span>
         <i class='bx bx-chevron-down' ></i>
       </div>
     </nav>
 
   
-    <div class="home-content">
-      <div class="overview-boxes">
+  <!------------------------------------------------------------------------------------------------->
+  
+  <div class="home-content">
+     <div class="overview-boxes">
+        
+
         <div class="box">
           <div class="right-side">
-               <div class="box-topic">Total Bookings</div>
+             <div class="box-topic">Total Bookings</div>
             <div class="number">
-                <%
-                dbconnect obje =new dbconnect();
-
-                Stringflightbookcount=obje.flightbookcount();
-
+            <%
                 String flightbookcount=obje.flightbookcount();
-
                 out.print(flightbookcount);
                 %>
             </div>
-            
-          </div>
-          <i class='bx bx-cart-alt cart'></i>
+           </div>
         </div>
         <div class="box">
           <div class="right-side">
-             <div class="box-topic">Total Users</div>
-            <div class="number">
-            <%
+            <div class="box-topic">Total Users</div>
+            <div class="number"><%
                 String usercount=obje.usercount();
                 out.print(usercount);
                 %>
-            </div>
-            
-          </div>
-          <i class='bx bxs-cart-add cart two' ></i>
-        </div>
-        <div class="box">
-          <div class="right-side">
-            <div class="box-topic">Total G 01 Staff Members</div>
-            <div class="number"><%
+             </div>
+           </div>
+         </div>
 
+
+        div class="box">
+          <div class="right-side">
+               <div class="box-topic">Total G 01 Staff members</div>
+            <div class="number">
+                <%
+                dbconnect obje =new dbconnect();
                 String G1empcount=obje.G1empcount();
                 out.print(G1empcount);
-
-                String G1empcount=obje. G1empcount();
-                out.print( G1empcount);
-
-                %></div>
-            
+                %>
+            </div>
           </div>
-          <i class='bx bx-cart cart three' ></i>
+        </div>
+
+
         </div>
         <div class="box">
           <div class="right-side">
-            <div class="box-topic">Total G 02 Staff Members</div>
+            <div class="box-topic">Total G 02 Staff members</div>
             <div class="number"><%
                 String G2empcount=obje.G2empcount();
                 out.print(G2empcount);
                 %></div>
-            
-          </div>
-          <i class='bx bxs-cart-download cart four' ></i>
-        </div>
+           </div>
+         </div>
       </div>
+    </div>
+  </div>
 
 
-            
       <div class="sales-boxes">
         <div class="recent-sales box">
           <div class="title">User Details</div>
+
+
+<!------------------------------------------------------------------------------------------------------------------------>
 <%@page import="java.io.PrintWriter"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
           <%
               
-      
+       
         out.println("<br>");  
           
         List<model.userdetailsbean> list=model.dbconnect.getuserdetails();  
@@ -178,7 +178,7 @@ cookieverify obj=new cookieverify();
         out.print("<table border='1' width='100%'");  
         out.print("<tr><th>Username</th><th>Fullname</th><th>Email</th><th>Password</th><th></th><th></th><th></th>");  
         for(model.userdetailsbean e:list){  
-         out.print("<tr><td>"+"&nbsp "+e.getusername()+"</td><td>"+"&nbsp"+e.getfullname()+"</td><td>"+"&nbsp "+e.getemail()+"</td><td>"+"&nbsp "+e.getpassword()+"</td>  </tr>");  
+         out.print("<tr><td>"+"&nbsp "+e.getusername()+"</td><td>"+"&nbsp"+e.getfullname()+"</td><td>"+"&nbsp "+e.getemail()+"</td><td>"+"&nbsp "+e.getpassword()+"</td><td> <form action='./deleteusers' method='post'><input type='hidden' name='username' value="+e.getusername()+"> <input type='submit' value='Delete'>  </form></td></tr>");  
         }  
         out.print("</table>");  
         out.close(); 

@@ -1,0 +1,24 @@
+table{
+    border-radius: 12px 12px 0 0;
+   border-collapse: collapse;
+    border-spacing: 0;
+   box-shadow: 0 2px 15px rgba(64,64,64,.7);
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    
+   
+   
+   }
+   td , th{
+    padding: 10px 10px;
+    text-align: center;
+    
+   }
+   
+  
+   tr{
+    width: 100%;
+    background-color: #f6f5f5;
+    font-family: 'Montserrat', sans-serif;
+   }
+  
