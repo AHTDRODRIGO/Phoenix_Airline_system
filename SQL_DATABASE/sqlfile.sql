@@ -346,6 +346,27 @@ INSERT INTO `userdetails` (`fullname`, `Email`, `Phone`, `Mobile`, `Address`) VA
 ('Amir Khan', 'amirk@gmail', '011-389045', '07222256781','No80,kindomroad,kandy'),
 ('Vikram Hasan', 'vikram@gmail', '011-43567', '078522332723','No65,mainroad,galle');
 
+
+Table structure for table `userdetails-admin`
+--
+
+CREATE TABLE `userdetails` (
+  `uname` varchar(100) NOT NULL,
+  `fullname` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `userdetails`
+--
+
+INSERT INTO `userdetails` (`uname`, `fullname`, `email`, `password`) VALUES
+('Rodrigo', 'Anthonan hettilage Tharushi Rodrigo', 'tharushi@gmail.com', '	asd123fgtd'),
+('Samarakoon', 'Samarakoon arachchige don samudi samarakoon', 'samudi12@gmail.com', 'hhggsyjj127hshgh'),
+('Kahadagama', 'weerasinha mudiyanselage sudilka kahadagama', 'sudilka4@gmail.com', 'haktgsjih234hg'),
+
+
 ----Table structure for table `userlogin`----
 
 CREATE TABLE `userlogin` (
